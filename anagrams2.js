@@ -1,106 +1,84 @@
-const button = document.getElementById("findButton2");
-button.addEventListener("click", function () {
+// ---------------Function Alpha --------------------------
 
-  let typedText = document.getElementById("input1").value;
+function alphabetize(a) {
+  return a.toLowerCase().split("").sort().join("").trim();
+}
+
+// ---------------TASK --------------------------
+
+const objeto = {}
+
+let teste =  ["alegria", "alergia", "coxinha", "oi","ocxinha","elargia"]
+
+document.getElementById("findButtonTask").onclick = function() {
   
+    for (i=0; i < teste.length ; i++) {
 
-  let array =[];
+      if (teste[i].length >= 6) {
+      
+      objeto[alphabetize(teste[i])] = []    
 
-  
-
-  function getAnagramsOf(x) {
-
-    function alphabetize(a) {
-      return a.toLowerCase().split("").sort().join("").trim();
-    }
-  
-    for (i=0 ; i < palavras.length; i++) {
     
-      if (alphabetize(x) === alphabetize(palavras[i])) {
-    
-       array.push((palavras[i]));
-      }
+
     }
 
-    return array
-  }
+    }
+
+    for (i =0 ; i < teste.length; i++) {
+
+      if (teste[i].length >= 6) {
+
+      objeto[alphabetize(teste[i])].push(teste[i])
+    }
+    }
+
+
+    
+    
+
+
+  console.log(objeto)
+  console.log(Object.keys(objeto).length)
   
-  let div = document.getElementById("principal");
 
-  div.innerHTML = getAnagramsOf(typedText)
-});
+}   
+  
 
-document.getElementById("zerar2").onclick = function() {
+   
+  
+  
+  
 
-  let div = document.getElementById("principal");
+
+  
+
+
+
+
+
+
+
+// ---------------RESETS-------------------------------------
+
+document.getElementById("zerarTask").onclick = function() {
+
+  let div = document.getElementById("taskbox");
   div.innerHTML = "";
 
 }
 
+document.getElementById("zerar1").onclick = function() {
 
+  let div = document.getElementById("bonus1box");
+  div.innerHTML = "";
+}
 
-    
+document.getElementById("zerar2").onclick = function() {
 
+  let div = document.getElementById("bonus2box");
+  div.innerHTML = "";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
