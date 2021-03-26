@@ -6,21 +6,21 @@ function alphabetize(a) {
 
 // ---------------TASK --------------------------
 
-const objeto = {}
 
-let array =[]
-
-let teste =  ["aeiouz", "eaiouz","alegria","eaoiuz", "alergia", "coxinha", "oi","ocxinha","elargia", "ahnixoc"]
 
 document.getElementById("findButtonTask").onclick = function() {
   
+  const objeto = {}
+
+  let array =[]
+
     for (i=0; i < palavras.length ; i++) {
 
       if (palavras[i].length >= 6) {
       
       objeto[alphabetize(palavras[i])] = []    
     
-    }
+      }
 
     }
 
@@ -30,7 +30,7 @@ document.getElementById("findButtonTask").onclick = function() {
 
       objeto[alphabetize(palavras[i])].push(palavras[i])
 
-    }
+      }
     }
 
     array = Object.values(objeto)
@@ -38,28 +38,46 @@ document.getElementById("findButtonTask").onclick = function() {
     function getSetsOfFiveAnagrams() {
     
 
-    for (i=0 ; i <array.length ; i++) {
-    
-      if (array[i].length >= 5) {
+      for (i=0 ; i <array.length ; i++) {
+      
+        if (array[i].length >= 5) {
 
-        let section = document.getElementById("taskbox")
-        let div = document.createElement("p");
-        section.appendChild(div)
-        div.innerHTML = JSON.stringify(array[i])
-        
-    }}
+          let section = document.getElementById("taskbox")
+          let div = document.createElement("p");
+          section.appendChild(div)
+          div.innerHTML = JSON.stringify(array[i])
+          
+        }}
 
 
-    } getSetsOfFiveAnagrams()
+      } getSetsOfFiveAnagrams()
 
   
-
 }   
   
 
-   
+// ---------------BONUS 1 --------------------------
+
+
+document.getElementById("findButton1").onclick = function() {
+
+  const objeto2 = {}
+
+  let typedText = document.getElementById("input1").value;
+
+  let textoJunto = typedText.toLowerCase().split("").sort().join("").trim();
+
+
+  let arrayTexto = textoJunto.split("") 
+
   
-  
+}
+
+
+
+
+
+
   
 
 
