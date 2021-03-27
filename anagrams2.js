@@ -4,6 +4,7 @@ function alphabetize(a) {
   return a.toLowerCase().split("").sort().join("").trim();
 }
 
+  // conta as elementos de um array mostrando o resultado de cada como objeto
 function objectize(array) {
 
   const objetoTyped = {}
@@ -23,6 +24,7 @@ function objectize(array) {
   return objetoTyped
 }
 
+  // pega um objeto e transforma num array pela quantidade dos valores indicados
 function arrayrize(obj) {
 
   let novoArray = []
@@ -56,21 +58,47 @@ function objCompare(mainObj,testObj) {
 
 }
 
+
+// subtrai os values das keys do mainobj dos que tiver no subtobj
 function objSubtract(mainObj,subtObj) {
 
-  let output = mainObj
+  let output = {}
 
-  for (let m = 0; m < Object.keys(subtObj).length ; m++) {
+  for (let m = 0; m < Object.keys(mainObj).length ; m++) {
 
-    if (mainObj[Object.keys(subtObj)[m]] != undefined) {
+    if (subtObj[Object.keys(mainObj)[m]] != undefined && mainObj[Object.keys(mainObj)[m]] != undefined) {
+        output[Object.keys(mainObj)[m]] = mainObj[Object.keys(mainObj)[m]] -  subtObj[Object.keys(mainObj)[m]]}
 
-     output[Object.keys(subtObj)[m]] = mainObj[Object.keys(subtObj)[m]] -  subtObj[Object.keys(subtObj)[m]]
-    
-  }}
+
+    if (mainObj[Object.keys(mainObj)[m]] != undefined && subtObj[Object.keys(mainObj)[m]] == undefined) {
+        output[Object.keys(mainObj)[m]] = mainObj[Object.keys(mainObj)[m]]
+
+    }
+
+}
 
   return output
 
 } 
+
+
+
+function objClean(objt) {
+
+  let output = {}
+
+  for (let x =0; x < Object.keys(objt).length; x++) {
+
+  if (objt[Object.keys(objt)[x]] != "") {output[Object.keys(objt)[x]] = objt[Object.keys(objt)[x]] }
+
+}
+
+  return output
+
+} 
+
+
+
 
 
 
@@ -131,43 +159,65 @@ document.getElementById("findButtonTask").onclick = function() {
 
 document.getElementById("findButton1").onclick = function() {
 
-  const objetoFinal = {}
+   let objetoFinal = {}
 
-  let arrayObj =[]
+ 
+  let testeArray = palavras
 
-  let testeInput = "moto rua amanha";
+  // let testeArray =  ["moto", "rua", "amanha", "dia", "hoje", "sim", "nao", "ok", "alfa", "uar", "ruaamanha"]
 
-  let testeArray =  ["moto", "rua", "amanha", "dia", "hoje", "sim", "nao", "ok", "alfa", "uar"]
-
-  let typedText = testeInput
-    // document.getElementById("input1").value;
+  let typedText =  document.getElementById("input1").value;
 
   let inputAlphaArray = alphabetize(typedText).split("")
 
   let objetoInput = objectize(inputAlphaArray)  
 
-  
-
+     
     for (let k = 0 ; k < testeArray.length; k++) {
 
-      let objLista = objectize(testeArray[k].split(""))
-
-      
-      if (objCompare(objetoInput,objLista) === true) {
+            
+      if (alphabetize(typedText).includes(alphabetize(testeArray[k]))) {
 
         objetoFinal[testeArray[k]] = []
+       
+    }}
 
-      }
+  
+  
 
-    
+      for (let b = 0 ; b < Object.keys(objetoFinal).length; b++) {
 
-               
-      for (let b = 0 ; b < testeArray[k].length ; b++) {}
+               for(let d = 0 ; d < testeArray.length ; d++){
+          
+          if(arrayrize(objSubtract(objetoInput,objectize(Object.keys(objetoFinal)[b].split("")))).join("") == alphabetize(testeArray[d])) {
+
+            objetoFinal[Object.keys(objetoFinal)[b]].push(testeArray[d])
+
+          }
+                  
+        }
 
     }
 
-    console.log(objetoFinal)
+    let objetoLimpo = objClean(objetoFinal)
 
+    for (y = 0; y < Object.keys(objetoLimpo).length ; y++ ) {
+
+      console.log(`${Object.keys(objetoLimpo)[y]} : ${Object.values(objetoLimpo)[y]}`)
+
+    let section = document.getElementById("bonus1box")
+    let div = document.createElement("p");
+    section.appendChild(div)
+    div.innerHTML = `${Object.keys(objetoLimpo)[y]} : ${Object.values(objetoLimpo)[y]}`
+
+
+
+    }
+    
+
+
+
+      
 }
 
     
@@ -182,6 +232,65 @@ document.getElementById("findButton1").onclick = function() {
 
   // ---------------BONUS 2 --------------------------
     
+
+
+
+
+
+// document.getElementById("findButton1").onclick = function() {
+
+//   const objetoFinal = {}
+
+//   let arrayObj =[]
+
+//   let testeInput = "moto rua amanha";
+
+//   let testeArray =  ["moto", "rua", "amanha", "dia", "hoje", "sim", "nao", "ok", "alfa", "uar", "ruaamanha"]
+
+//   let typedText = testeInput
+//     // document.getElementById("input1").value;
+
+//   let inputAlphaArray = alphabetize(typedText).split("")
+
+//   let objetoInput = objectize(inputAlphaArray)  
+
+  
+//     for (let k = 0 ; k < testeArray.length; k++) {
+
+//       let objLista = objectize(testeArray[k].split(""))
+
+      
+//       if (objCompare(objetoInput,objLista) === true) {
+
+//         objetoFinal[testeArray[k]] = []
+       
+//     }}
+   
+
+//       for (let b = 0 ; b < Object.keys(objetoFinal).length; b++) {
+
+//         // let objSet = objectize(Object.keys(objetoFinal)[b].split(""))
+
+//         // console.log(objetoInput)
+//         // console.log(objectize(Object.keys(objetoFinal)[b].split("")))
+//         // console.log(Object.keys(objetoFinal)[b])
+
+//         // console.log(arrayrize(objSubtract(objetoInput,objectize(Object.keys(objetoFinal)[b].split("")))).join("") )
+
+//         for(let d = 0 ; d < testeArray.length ; d++){
+            
+//           if(arrayrize(objSubtract(objetoInput,objectize(Object.keys(objetoFinal)[b].split("")))).join("") == alphabetize(testeArray[d])) {
+
+//             objetoFinal[Object.keys(objetoFinal)[b]].push(testeArray[d])
+
+//           }
+         
+//         }
+
+//     }
+//       console.log(objetoFinal)
+      
+// }
 
 
 
