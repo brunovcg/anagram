@@ -133,46 +133,46 @@ document.getElementById("findButton1").onclick = function() {
 
   const objetoFinal = {}
 
-  // let array =[]
+  let arrayObj =[]
 
   let testeInput = "moto rua amanha";
 
-  let testeArray =  ["moto", "rua", "amanha", "dia", "hoje", "sim", "nao", "ok", "alfa"]
+  let testeArray =  ["moto", "rua", "amanha", "dia", "hoje", "sim", "nao", "ok", "alfa", "uar"]
 
   let typedText = testeInput
     // document.getElementById("input1").value;
-  let arrayText = alphabetize(typedText).split("")
 
-  let objetoInput = objectize(arrayText)  
+  let inputAlphaArray = alphabetize(typedText).split("")
+
+  let objetoInput = objectize(inputAlphaArray)  
 
   
-  // console.log(objetoInput)
-
 
     for (let k = 0 ; k < testeArray.length; k++) {
 
-      let objetoCompare = objectize(testeArray[k].split(""));
+      let objLista = objectize(testeArray[k].split(""))
 
-      // console.log(objetoCompare)
-
-          
-      for (let b = 0 ; b < testeArray[k].length ; b++) {
-
-        // console.log(k)
-
-        // console.log(Object.keys(objetoCompare)[b])     
-        
-
-      // if (objetoInput[Object.keys(objetoInput)[0]] >= objetoCompare[testeArray[k].split("")[b]]) {}
       
-    }
+      if (objCompare(objetoInput,objLista) === true) {
+
+        objetoFinal[testeArray[k]] = []
+
+      }
+
+    
+
+               
+      for (let b = 0 ; b < testeArray[k].length ; b++) {}
 
     }
+
+    console.log(objetoFinal)
 
 }
 
     
     
+
 
   
 
