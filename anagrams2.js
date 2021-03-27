@@ -164,8 +164,7 @@ document.getElementById("findButton1").onclick = function() {
  
   let testeArray = palavras
 
-  // let testeArray =  ["moto", "rua", "amanha", "dia", "hoje", "sim", "nao", "ok", "alfa", "uar", "ruaamanha"]
-
+  
   let typedText =  document.getElementById("input1").value;
 
   let inputAlphaArray = alphabetize(typedText).split("")
@@ -208,7 +207,7 @@ document.getElementById("findButton1").onclick = function() {
     let section = document.getElementById("bonus1box")
     let div = document.createElement("p");
     section.appendChild(div)
-    div.innerHTML = `${Object.keys(objetoLimpo)[y]} : ${Object.values(objetoLimpo)[y]}`
+    div.innerHTML = `${Object.keys(objetoLimpo)[y]} : ${JSON.stringify(Object.values(objetoLimpo)[y])}`
 
 
 
