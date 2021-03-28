@@ -303,7 +303,7 @@ document.getElementById("findButton1").onclick = function() {
 
     for (let k = 0 ; k < testeArray.length; k++) {
 
-      if (testeArray[k].length >= 3 && testeArray[k].length < (alphaText.length-3)) {
+      if (testeArray[k].length > 2  && testeArray[k].length <= (alphaText.length-4)) {
 
 
             
@@ -320,47 +320,64 @@ document.getElementById("findButton1").onclick = function() {
 
 
 
-//  for (let b = 0 ; b < Object.keys(objetoInicial).length; b++) {
+ for (let b = 0 ; b < Object.keys(objetoInicial).length; b++) {
 
-//   let objSobra = objSubtract(objetoInput,objectize(Object.keys(objetoInicial)[b].split("")))
+  let objSobra = objSubtract(objetoInput,objectize(Object.keys(objetoInicial)[b].split("")))
+
+
+  let keySize = typedText.length-Object.keys(objetoInicial)[b].length
  
 
-//   // console.log(objetoInput)
-//   // console.log(objectize((Object.keys(objetoInicial)[b]).split("")))
-//   // console.log(objectize(sobraPalavra))
+  // console.log(objetoInput)
+  // console.log(objectize((Object.keys(objetoInicial)[b]).split("")))
+  // console.log(objectize(sobraPalavra))
   
 
-//   for(let d = 0 ; d < testeArray.length ; d++){
+  for(let d = 0 ; d < testeArray.length ; d++){
 
-//     if (testeArray[d].length > 4) {
+    if (testeArray[d].length > 3 && testeArray[d].length < keySize) {
 
     
-//       if (objCompare(objSobra,objectize(testeArray[d].split("")))) {
+      if (objCompare(objSobra,objectize(testeArray[d].split("")))) {
 
-//         objetoInicial[Object.keys(objetoInicial)[b]][testeArray[d]] = []
+        objetoInicial[Object.keys(objetoInicial)[b]][testeArray[d]] = []
 
-//       }
+      }
       
-//     }    
-//   }
-//  }
+    }    
+  }
+ }
 
 
-
-
-  console.log(objetoInicial)
-
-
+  let objLimpo = objInsideClean(objetoInicial);
 
   
 
 
+  for (let t = 0; t < Object.keys(objLimpo).length ; t++){
+
+
+    for (let z=0; z < Object.keys(objLimpo[Object.keys(objLimpo)[t]]).length; z++ ) {
+
+
+      console.log( Object.keys(objLimpo)[t] + Object.keys(objLimpo[Object.keys(objLimpo)[t]])[z])          
+      
+
+  }
+
+
+
+  // console.log(objLimpo)
 
 
 
 
 
 
+
+
+
+}
 
 }
 
