@@ -81,6 +81,15 @@ function objSubtract(mainObj,subtObj) {
 
 } 
 
+let Obja = {a: {b:[1,2,3]}, 
+            a: {c:[2,3,4]},
+            a: {},
+            a: {d:[]},           
+          
+          
+          
+}
+
 
 
 function objClean(objt) {
@@ -97,6 +106,7 @@ function objClean(objt) {
 
 } 
 
+console.log(objClean(Obja))
 
 
 
@@ -159,7 +169,7 @@ document.getElementById("findButtonTask").onclick = function() {
 
 document.getElementById("findButton1").onclick = function() {
 
-   let objetoFinal = {}
+  let objetoFinal = {}
 
  
   let testeArray = palavras
@@ -172,51 +182,40 @@ document.getElementById("findButton1").onclick = function() {
   let objetoInput = objectize(inputAlphaArray)  
 
      
-    for (let k = 0 ; k < testeArray.length; k++) {
+  for (let k = 0 ; k < testeArray.length; k++) {
 
-            
-      if (alphabetize(typedText).includes(alphabetize(testeArray[k]))) {
-
-        objetoFinal[testeArray[k]] = []
-       
-    }}
-
-  
-  
-
-      for (let b = 0 ; b < Object.keys(objetoFinal).length; b++) {
-
-               for(let d = 0 ; d < testeArray.length ; d++){
           
-          if(arrayrize(objSubtract(objetoInput,objectize(Object.keys(objetoFinal)[b].split("")))).join("") == alphabetize(testeArray[d])) {
+    if (alphabetize(typedText).includes(alphabetize(testeArray[k]))) {
 
-            objetoFinal[Object.keys(objetoFinal)[b]].push(testeArray[d])
-
-          }
-                  
-        }
-
-    }
-
-    let objetoLimpo = objClean(objetoFinal)
-
-    for (y = 0; y < Object.keys(objetoLimpo).length ; y++ ) {
-
-      console.log(`${Object.keys(objetoLimpo)[y]} : ${Object.values(objetoLimpo)[y]}`)
-
-    let section = document.getElementById("bonus1box")
-    let div = document.createElement("p");
-    section.appendChild(div)
-    div.innerHTML = `${Object.keys(objetoLimpo)[y]} : ${JSON.stringify(Object.values(objetoLimpo)[y])}`
-
-
-
-    }
-    
-
-
-
+      objetoFinal[testeArray[k]] = []
       
+  }
+}
+
+  
+  for (let b = 0 ; b < Object.keys(objetoFinal).length; b++) {
+
+    let testeComparador = arrayrize(objSubtract(objetoInput,objectize(Object.keys(objetoFinal)[b].split("")))).join("")
+
+    for(let d = 0 ; d < testeArray.length ; d++){
+      
+      if(testeComparador == alphabetize(testeArray[d])) {
+
+        objetoFinal[Object.keys(objetoFinal)[b]].push(testeArray[d])
+
+      }      
+    }
+}
+
+  let objetoLimpo = objClean(objetoFinal)
+
+  for (y = 0; y < Object.keys(objetoLimpo).length ; y++ ) {
+
+  let section = document.getElementById("bonus1box")
+  let div = document.createElement("p");
+  section.appendChild(div)
+  div.innerHTML = `${Object.keys(objetoLimpo)[y]} + ${JSON.stringify(Object.values(objetoLimpo)[y])}`
+    }     
 }
 
     
