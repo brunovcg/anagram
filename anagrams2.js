@@ -296,7 +296,7 @@ document.getElementById("findButton1").onclick = function() {
 
     for (let k = 0 ; k < testeArray.length; k++) {
 
-      if (testeArray[k].length > 2  && testeArray[k].length <= (alphaText.length-4)) {
+      if (testeArray[k].length >= 3  && testeArray[k].length <= (alphaText.length-6)) {
 
 
             
