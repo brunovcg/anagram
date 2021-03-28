@@ -259,11 +259,11 @@ document.getElementById("findButton1").onclick = function() {
 
   for (y = 0; y < Object.keys(objetoLimpo).length ; y++ ) {
 
-  let section = document.getElementById("bonus1box")
-  let div = document.createElement("p");
-  section.appendChild(div)
-  div.innerHTML = `${Object.keys(objetoLimpo)[y]} + ${JSON.stringify(Object.values(objetoLimpo)[y])}`
-    }     
+    let section = document.getElementById("bonus1box")
+    let div = document.createElement("p");
+    section.appendChild(div)
+    div.innerHTML = `${Object.keys(objetoLimpo)[y]} + ${JSON.stringify(Object.values(objetoLimpo)[y])}`
+  }     
 
 
 
@@ -272,13 +272,6 @@ document.getElementById("findButton1").onclick = function() {
 
    
   // ---------------BONUS 2 --------------------------------------------------------------------------------------------------------------------------
-
-
-  let teste = { a: {b:[], c:[], d:[]},
-              z: {y:[], w:[],r:[]},
-              m: {}     
-}
-
 
 
     
@@ -328,68 +321,68 @@ document.getElementById("findButton1").onclick = function() {
   let keySize = typedText.length-Object.keys(objetoInicial)[b].length
  
 
-  // console.log(objetoInput)
-  // console.log(objectize((Object.keys(objetoInicial)[b]).split("")))
-  // console.log(objectize(sobraPalavra))
-  
-
   for(let d = 0 ; d < testeArray.length ; d++){
 
-    if (testeArray[d].length > 3 && testeArray[d].length < keySize) {
+    if (testeArray[d].length >= 3 && testeArray[d].length < keySize) {
 
     
       if (objCompare(objSobra,objectize(testeArray[d].split("")))) {
 
-        objetoInicial[Object.keys(objetoInicial)[b]][testeArray[d]] = []
+        objetoInicial[Object.keys(objetoInicial)[b]][testeArray[d]] =   arrayrize(objSubtract(objetoInput,objectize((Object.keys(objetoInicial)[b]+[testeArray[d]]).split("")))).join("")  
+
 
       }
       
     }    
   }
+
+ 
  }
 
 
-  let objLimpo = objInsideClean(objetoInicial);
-
-  
+  for (let t = 0; t < Object.keys(objetoInicial).length ; t++){
 
 
-  for (let t = 0; t < Object.keys(objLimpo).length ; t++){
 
 
-    for (let z=0; z < Object.keys(objLimpo[Object.keys(objLimpo)[t]]).length; z++ ) {
+    for (let z=0; z < Object.keys(objetoInicial[Object.keys(objetoInicial)[t]]).length; z++ ) {
 
 
-      console.log( Object.keys(objLimpo)[t] + Object.keys(objLimpo[Object.keys(objLimpo)[t]])[z])          
-      
+
+      let sobraFinal = objetoInicial[Object.keys(objetoInicial)[t]][Object.keys(objetoInicial[Object.keys(objetoInicial)[t]])[z]]
+
+
+      let sobraFinalLength = sobraFinal.length
+    
+
+      for (let k = 0 ; k < testeArray.length; k++){
+
+        
+
+        if (testeArray[k].length === sobraFinalLength) {
+
+          if (alphabetize(testeArray[k]) === sobraFinal) {
+
+
+
+            let section = document.getElementById("bonus2box")
+            let div = document.createElement("p");
+            section.appendChild(div)
+            div.innerHTML = `${Object.keys(objetoInicial)[t]} + ${ Object.keys(objetoInicial[Object.keys(objetoInicial)[t]])[z]} + ${testeArray[k]}`
+          
+
+          }
+
+        }
+
+
+      }
 
   }
 
-
-
-  // console.log(objLimpo)
-
-
-
-
-
-
-
-
-
 }
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
