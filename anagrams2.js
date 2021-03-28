@@ -123,12 +123,6 @@ function objInsideClean (objt) {
 
 
 
-let teste = { a: {b:[], c:[], d:[]},
-              z: {y:[], w:[],r:[]},
-              m: {}     
-}
-
-
 
 
 
@@ -204,28 +198,36 @@ document.getElementById("findButton1").onclick = function() {
      
   for (let k = 0 ; k < testeArray.length; k++) {
 
+    if (testeArray[k].length > 3) {
           
-    if (alphabetize(typedText).includes(alphabetize(testeArray[k]))) {
+    if (objCompare(objectize(typedText.split("")),objectize(testeArray[k].split("")))) {
 
       objetoFinal[testeArray[k]] = []
       
+    }
   }
-}
+  }
 
-  
+
   for (let b = 0 ; b < Object.keys(objetoFinal).length; b++) {
 
-    let testeComparador = arrayrize(objSubtract(objetoInput,objectize(Object.keys(objetoFinal)[b].split("")))).join("")
+    
+    let palavraSobra = arrayrize(objSubtract(objetoInput,objectize(Object.keys(objetoFinal)[b].split("")))).join("")
+
 
     for(let d = 0 ; d < testeArray.length ; d++){
+
       
-      if(testeComparador == alphabetize(testeArray[d])) {
+      
+      if(palavraSobra == alphabetize(testeArray[d])) {
 
         objetoFinal[Object.keys(objetoFinal)[b]].push(testeArray[d])
 
       }      
     }
 }
+
+console.log(objetoFinal)
 
   let objetoLimpo = objClean(objetoFinal)
 
@@ -236,25 +238,91 @@ document.getElementById("findButton1").onclick = function() {
   section.appendChild(div)
   div.innerHTML = `${Object.keys(objetoLimpo)[y]} + ${JSON.stringify(Object.values(objetoLimpo)[y])}`
     }     
+
+
+
 }
 
    
   // ---------------BONUS 2 --------------------------
-    
-  document.getElementById("findButton1").onclick = function() {
 
 
-
-
-
-
-
-
-
+  let teste = { a: {b:[], c:[], d:[]},
+              z: {y:[], w:[],r:[]},
+              m: {}     
+}
 
 
 
     
+  document.getElementById("findButton2").onclick = function() {
+
+
+    let objetoInicial = {}
+ 
+    let testeArray = palavras
+    
+    let typedText =  document.getElementById("input2").value;
+  
+    let inputAlphaArray = alphabetize(typedText).split("")
+  
+    let objetoInput = objectize(inputAlphaArray)  
+  
+    for (let k = 0 ; k < testeArray.length; k++) {
+  
+            
+      if (alphabetize(typedText).includes(alphabetize(testeArray[k]))) {
+  
+        objetoInicial[testeArray[k]] = {}
+        
+    }
+  }
+
+
+
+  for (let b = 0 ; b < Object.keys(objetoInicial).length; b++) {
+
+    
+    let sobraPalavra= arrayrize(objSubtract(objetoInput,objectize(Object.keys(objetoInicial)[b].split(""))))
+
+    // console.log(objetoInput)
+    // console.log(objectize((Object.keys(objetoInicial)[b]).split("")))
+    // console.log(objectize(sobraPalavra))
+
+    for(let d = 0 ; d < testeArray.length ; d++){
+      
+      if(sobraPalavra.includes(alphabetize(testeArray[d]))) {
+
+        objetoInicial[Object.keys(objetoInicial)[b]][testeArray[d]] = []
+
+      }      
+    }
+}
+
+
+  console.log(objetoInicial)
+
+
+
+
+
+
+
+
+
+
+
+  // console.log(Object.keys(objetoInicial))
+
+
+
+
+
+
+
+
+
+
   }
 
 
